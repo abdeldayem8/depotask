@@ -1,25 +1,15 @@
 import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import useFetchforpost from '../../hooks/useFetchforpost';
 const Posts = () => {
-    const[posts,setPosts] = useState([]);
-    const url = "https://jsonplaceholder.typicode.com/posts";
-    useEffect(()=>{
-      fetch(url)
-        .then(res => {
-          if (!res.ok) {
-            return Error("Oh no");
-          }
-          return res.json();
-        })
-        .then(data => setPosts(data));
-    },[]);
+
+  const posts = useFetchforpost("https://jsonplaceholder.typicode.com/posts")
+
   return (
     <>
     <div className="container mx-auto">
    <p className="font-bold text-lg my-4 text-center">Posts</p>
-   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-1">
      {posts.map((post) => (
        <Link to={`/posts/${post.id}`} key={post.id}
          className="bg-white p-4 shadow-md rounded-lg border border-gray-200"
