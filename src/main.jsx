@@ -2,13 +2,13 @@
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
-import {  createHashRouter, RouterProvider } from 'react-router-dom'
+import {   HashRouter, RouterProvider } from 'react-router-dom'
 import Notfound from './Notfound.jsx'
 import Postdetail from './components/Postdetails/Postdetail.jsx'
 import Posts from './components/Posts/Posts.jsx'
 
 
-const router = createHashRouter([
+const router = HashRouter([
     {path:'/',element:<App/>,
         children:[
             {path:'/',element:<Posts/>},
